@@ -2,18 +2,7 @@
 
 I'm currently using [dotbot](https://github.com/anishathalye/dotbot) to automate the installation process.
 
-I mostly use this on Manjaro and Debian Stretch/Buster, but it should be relatively easy to modify to run on other OSes as well.
-
-### Requirements
-
-| Required packages     |
-| --------------------- |
-| Git                   |
-| Zsh                   |
-| Neovim                |
-| Tmux                  |
-| curl                  |
-| NodeJS (for coc.nvim) |
+I mostly use this on Manjaro and Debian Buster/Stretch, but it should be relatively easy to modify this to run on other OSes as well.
 
 ### Steps
 
@@ -25,9 +14,7 @@ I mostly use this on Manjaro and Debian Stretch/Buster, but it should be relativ
 1. Set zsh as the default shell
    1. `chsh -s $(which zsh)`
 
-### Optional
-
-#### Debian 9: Install packages from backports
+### Debian 9: Install packages from backports
 
 The packages on Debian 9 are too old, so I recommend to install tmux and neovim from backports.
 
@@ -40,6 +27,7 @@ sudo apt install neovim tmux -t stretch-backports
 ## Update
 
 To update dotfiles, run `git pull && ./install`.
+
 To update submodules, run `git submodule update --remote --init --recursive`.
 
 ## Enable and start the SSH-agent service
