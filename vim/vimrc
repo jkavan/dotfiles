@@ -1,0 +1,533 @@
+" Plugins {{{
+
+" Auto-download Plug if it's missing
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plug')
+
+" 24bit colorscheme
+Plug 'jacoborus/tender.vim'
+
+" A better statusline
+Plug 'vim-airline/vim-airline'
+
+" Insert/delete brackets, parens or quotes in pair
+Plug 'jiangmiao/auto-pairs'
+
+" FZF vim integration
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+
+" Easily jump to target character
+Plug 'easymotion/vim-easymotion'
+
+" Expand Emmet abbreviations
+Plug 'mattn/emmet-vim'
+
+" Display Git diff in the sign column
+Plug 'airblade/vim-gitgutter'
+
+" Select text based on indentation
+Plug 'michaeljsmith/vim-indent-object'
+
+" Multiple cursors
+Plug 'mg979/vim-visual-multi'
+
+" Mappings to easily manage surroundings in pairs
+Plug 'tpope/vim-surround'
+
+" Adds various text objects, such as pairs of parentheses
+Plug 'wellle/targets.vim'
+
+" Align text
+Plug 'godlygeek/tabular'
+
+" Improved mouse support, cursor shapes, and bracketed paste
+Plug 'wincent/terminus'
+
+" Snippet plugin
+Plug 'SirVer/ultisnips'
+" Provides snippet files for various languages
+Plug 'honza/vim-snippets'
+
+" Easily comment selected blocks of text
+Plug 'scrooloose/nerdcommenter'
+
+" Adds icons for Airline's statusline and tabline
+Plug 'ryanoasis/vim-devicons'
+
+" Generates and maintains tags
+if executable('/usr/bin/ctags')
+  Plug 'jsfaint/gen_tags.vim'
+endif
+
+" Tagbar
+Plug 'majutsushi/tagbar'
+
+" Git plugin
+Plug 'tpope/vim-fugitive'
+
+" Provides JavaScript highlighting and improved indentation
+Plug 'pangloss/vim-javascript'
+" React syntax highlighting and improved indentation
+Plug 'MaxMEllon/vim-jsx-pretty'
+
+" Color highlighter
+Plug 'norcalli/nvim-colorizer.lua'
+
+" Visualizes undo history
+
+Plug 'mbbill/undotree'
+
+" Displays thin vertical lines at each indentation level
+Plug 'yggdroot/indentline'
+
+" Puppet development
+Plug 'rodjek/vim-puppet'
+
+" Syntax plugin for Ansible
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = [
+  \'coc-css',
+  \'coc-emmet',
+  \'coc-eslint',
+  \'coc-git',
+  \'coc-html',
+  \'coc-json',
+  \'coc-markdownlint',
+  \'coc-neosnippet',
+  \'coc-phpls',
+  \'coc-prettier',
+  \'coc-snippets',
+  \'coc-tslint-plugin',
+  \'coc-tsserver',
+  \'coc-ultisnips',
+  \'coc-yaml',
+  \'coc-yank',
+\]
+
+" Fixes compatibility issues with ansible-vim and coc-yaml
+let g:coc_filetype_map = {
+ \ 'yaml.ansible': 'yaml',
+ \ }
+
+call plug#end()
+
+" }}}
+
+" Colors and fonts {{{
+
+" Tell Vim 256 colors are supported
+set t_Co=256
+
+" Display in UTF-8
+set encoding=utf-8
+
+" Enable termguicolors
+if has('termguicolors')
+  set termguicolors
+endif
+
+" Set Vim-specific sequences for RGB colors
+if exists('&t_8f') && exists('&t_8b')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+" Color scheme / theme
+colorscheme tender
+set background=dark
+set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
+
+" Enable text anti aliasing if not using Neovim
+if !has('nvim')
+  set antialias
+endif
+
+" A slightly transparent popup window
+if (has('gui running'))
+  set pumblend=20
+endif
+
+" Experimental transparency thinguli
+hi Normal guibg=None ctermbg=None
+
+" }}}
+
+" User interface {{{
+
+" Enable mouse mode in all modes
+set mouse=a
+
+" Show command on the bottom right corner
+set showcmd
+
+" Don't show invisible special characters
+set nolist
+
+" don't give |ins-completion-menu| messages
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Enable enhanced command-line completion
+set wildmenu
+set wildmode=longest:full,full
+
+" Always show the status line
+set laststatus=2
+
+" Automatically scroll if there are less than 5 lines visible above/below the cursor
+set scrolloff=5
+
+" Run 'set list' to show special characters like line endings
+set listchars=eol:↲,tab:»\|\,extends:›,precedes:‹,nbsp:‡,trail:·
+
+" Show line numbers, except for special filetypes
+if index(['undotree', 'diff', 'gitcommit'], &ft) < 0
+  set number
+  " Show relative line numbers in normal mode
+  augroup numbertoggle
+    autocmd! * <buffer>
+    autocmd BufEnter,FocusGained,InsertLeave <buffer> set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   <buffer> set norelativenumber
+    "autocmd BufEnter,FocusGained,InsertLeave * call SetRelNumber(1)
+    "autocmd BufLeave,FocusLost,InsertEnter   * call SetRelNumber(0)
+  augroup END
+endif
+
+" Live preview of substitution results
+if (has('nvim'))
+  set inccommand=nosplit
+endif
+
+" Enable syntax highlighting
+syntax on
+
+" Briefly jump to matching bracket to highlight it
+set showmatch
+
+" Use _ as a word separator
+set iskeyword-=_
+
+" Prevent moving the cursor when changing focus to vim
+" For some reason, this causes issues where Vim will randomly disable mouse
+" support when focused
+"augroup NO_CURSOR_MOVE_ON_FOCUS
+  "au!
+  "au FocusLost * let g:oldmouse=&mouse | set mouse=
+  "au FocusGained * if exists('g:oldmouse') | let &mouse=g:oldmouse | unlet g:oldmouse | endif
+"augroup END
+
+" }}}
+
+" General keybinds {{{
+
+" Set leader key to ,
+let mapleader=','
+
+" Space toggles folds
+nnoremap <Space> za
+
+" Better insert completion keybinds
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use <c-space> to trigger completion in insert mode
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use VScode like tabs for snippets. Tab jumps to next snippet argument thingy
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+let g:coc_snippet_next = '<tab>'
+
+" Toggle Tagbar
+nmap <Leader>pt :TagbarToggle<CR><C-W><Right>
+
+" Expand Emmet abbreviation
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,ctp EmmetInstall
+"autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" Jump to target using EasyMotion
+hi clear EasyMotionTarget
+hi EasyMotionTarget guifg=Red
+map <Leader> <Plug>(easymotion-prefix)
+
+" Press enter to unhighlight text
+nnoremap <silent> <CR> :noh<CR>
+
+" }}}
+
+" Files, undo, etc {{{
+
+" Type :w!! to write as sudo
+function SudoWrite()
+  if executable('/bin/ksshaskpass')
+    w !SUDO_ASKPASS=/bin/ksshaskpass sudo tee > /dev/null %
+  else
+    w !sudo tee > /dev/null %
+  endif
+endfunction
+cmap <silent>w!! :call SudoWrite()<CR>
+
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Open Undotree with leader + u
+nnoremap <silent><Leader>u :call undotree#UndotreeToggle()<CR>
+
+" Turn persistent undo on (so you can undo even when you close a buffer/VIM)
+try
+  set undodir=~/.vim/.tmp/undo
+  set undofile
+catch
+endtry
+
+" Set focus when toggling Undotree
+if !exists('g:undotree_SetFocusWhenToggle')
+  let g:undotree_SetFocusWhenToggle = 1
+  let g:undotree_WindowLayout = 2
+endif
+
+ " Write to swap file after 0.5sec of inactivity (also makes GitGutter more responsive)
+set updatetime=500
+
+" }}}
+
+" Highlighting {{{
+
+" Make comments font italic
+highlight Comment cterm=italic
+highlight Comment gui=italic
+
+" Set line numbers font color
+highlight LineNr guifg=#6a6a6a
+
+" Highlight trailing whitespaces
+highlight ExtraWhitespace ctermbg=darkred guibg=darkred
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Search
+highlight Search term=reverse ctermfg=0 ctermbg=11 guifg=White guibg=DarkMagenta
+
+" Spell check colors
+highlight clear SpellBad
+highlight SpellCap ctermfg=088 ctermbg=226 guifg=#870000 guibg=#ffff00
+
+" Set popup menu colors
+highlight Pmenu guifg=Grey90 guibg=Grey20
+highlight CocFloating guibg=Grey20
+
+"" Use markdown highlights for popup menus
+"highlight! link CocFloating markdown
+"highlight! link Pmenu markdown
+
+" }}}
+
+" Searching {{{
+
+" Show matches while typing the search string
+set incsearch
+" Highlight search results
+set hlsearch
+" Ignore case when searching
+set ignorecase
+" Don't ignore case when searching uppercase letters
+set smartcase
+
+" Extended % matching between brackets, etc
+runtime macros/matchit.vim
+
+" }}}
+
+" Indentations {{{
+
+" Press § to toggle 'set list' and display indent lines
+let g:indentLine_enabled = 0
+nnoremap § :set list!<CR>:IndentLinesToggle<CR>
+
+filetype plugin indent on
+
+" Insert blanks according to shiftwidth
+set smarttab
+" Use spaces instead of tabs
+set expandtab
+" Smart autoindent when starting a new line
+set smartindent
+" Number of spaces to use for each step of (auto)indent
+set shiftwidth=2
+" Number of spaces that <Tab> counts for
+set softtabstop=2
+" Number of spaces that a tab counts in the file counts for
+set tabstop=2
+
+" Filetype specific indents
+au FileType html setl sw=2 sts=2 et
+au FileType php setl sw=4 sts=4 et
+au FileType css setl sw=2 sts=2 et
+
+" }}}
+
+" Splits and folds {{{
+
+" Split right, then below
+set splitbelow
+set splitright
+
+" Folding
+set foldenable
+set foldmethod=manual
+
+" }}}
+
+" Markdown {{{
+
+" Enable spell check for markdown
+au FileType markdown setl spell
+
+" Type :* to open current markdown file in browser
+autocmd FileType markdown cmap * :exec 'silent !xdg-open %'<CR>
+
+" }}}
+
+" Coc.nvim {{{
+let g:coc_disable_startup_warning = 1
+" }}}
+
+" Airline {{{
+
+" Enable powerline fonts for Airline
+let g:airline_powerline_fonts = 1
+
+" Enable Airline tabs
+let g:airline#extensions#tabline#enabled = 1
+
+" Enable Coc extension
+let g:airline#extensions#coc#enabled = 1
+" }}}
+
+" FZF {{{
+
+" Keybinds
+vnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-f> :Files<CR>
+vnoremap <silent> <C-g> :GFiles<CR>
+nnoremap <silent> <C-g> :GFiles<CR>
+vnoremap <silent> <Leader>pl :Lines<CR>
+nnoremap <silent> <Leader>pl :Lines<CR>
+
+vnoremap <silent> <Leader>pc :Commits<CR>
+nnoremap <silent> <Leader>pc :Commits<CR>
+vnoremap <silent> <Leader>pC :BCommits<CR>
+nnoremap <silent> <Leader>pC :BCommits<CR>
+vnoremap <silent> <Leader>pw :Windows<CR>
+nnoremap <silent> <Leader>pw :Windows<CR>
+vnoremap <silent> <Leader>pb :Buffers<CR>
+nnoremap <silent> <Leader>pb :Buffers<CR>
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Smaller FZF window size, default ~40%
+let g:fzf_layout = { 'down': '~20%' }
+
+" Disable statusline
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse'
+
+let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
+
+function! OpenFloatingWin()
+  let height = &lines - 3
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let col = float2nr((&columns - width) / 2)
+
+  let opts = {
+    \ 'relative': 'editor',
+    \ 'row': height * 0.3,
+    \ 'col': col + 30,
+    \ 'width': width * 3 / 4,
+    \ 'height': height / 2
+    \ }
+
+  let buf = nvim_create_buf(v:false, v:true)
+  let win = nvim_open_win(buf, v:true, opts)
+
+  call setwinvar(win, '&winhl', 'Normal:Pmenu')
+
+  setlocal
+    \ buftype=nofile
+    \ nobuflisted
+    \ bufhidden=hide
+    \ nonumber
+    \ norelativenumber
+    \ signcolumn=no
+endfunction
+
+" }}}
+
+" Tabular {{{
+
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a<bar> :Tabularize /\|<CR>
+vmap <Leader>a<bar> :Tabularize /\|<CR>
+
+" }}}
+
+" Show documentation in preview window {{{
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (index(['yaml.ansible'], &filetype) >= 0)
+    execute 'new | 0read !ansible-doc '.expand('<cword>')
+    setlocal nobuflisted buftype=nofile bufhidden=delete noswapfile ft=man nonumber norelativenumber signcolumn=no
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" }}}
+
+" Automatically close error list on quit / close
+" This was used for ALE, but it MIGHT help with other extensions as well
+autocmd QuitPre * if empty(&bt) | lclose | endif
+
+" vim: foldmethod=marker foldlevel=0

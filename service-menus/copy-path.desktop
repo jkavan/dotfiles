@@ -1,0 +1,13 @@
+[Desktop Action copy-path]
+Exec=echo -n "%F" | xclip -selection clipboard
+Name=Copy path(s)
+Icon=edit-copy
+
+[Desktop Entry]
+Actions=copy-path
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all
+Type=Service
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=Path
+X-KDE-Protocol=file

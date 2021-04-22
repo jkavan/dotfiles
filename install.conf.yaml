@@ -1,0 +1,48 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.i3: ~
+    ~/.tmux.conf: ~
+    ~/.config/kitty: ~
+    ~/.config/rofi: ~
+    ~/.config/picom.conf: ~
+    ~/.config/dunst: ~
+    ~/.vim: ~
+    ~/.config/nvim: 'nvim/'
+    ~/.oh-my-zsh: ~
+    ~/.zshrc: ~
+    ~/.zshenv: ~
+    ~/.inputrc: ~
+    ~/.fzf: ~
+    ~/.fzf-tab-completion: 'fzf-tab-completion/'
+    ~/.dir_colors: ~
+    ~/.markdownlintrc: ~
+    ~/.gitignore_global: ~
+    ~/.config/systemd/user/ssh-agent.service: 'systemd/ssh-agent.service'
+
+- shell:
+  - [mkdir -p ~/.zsh_history, Create a directory for storing shell command history]
+  - [mkdir -p ~/.local/share/kservices5/ServiceMenus/, Create a directory for storing file manager service menus]
+  - [chmod og-rwx ~/.zsh_history, Set directory permissions]
+  - [git submodule update --init --recursive, Installing submodules]
+  - [powerline-fonts/install.sh, Install Powerline fonts]
+  - [~/.fzf/install --completion --key-bindings --no-update-rc --no-bash, Installing fzf]
+  - [nvim +PlugInstall +UpdateRemotePlugins +qa --headless, Installing nvim plugins]
+
+- link:
+    ~/.local/share/kservices5/ServiceMenus:
+      path: 'service-menus/*'
+      force: true
+      create: true
+      glob: true
+
+- link:
+    ~/.oh-my-zsh/custom/plugins/:
+      path: 'oh-my-zsh-plugins/*'
+      force: true
+      create: true
+      glob: true

@@ -1,0 +1,19 @@
+[Desktop Action copy-unc-path]
+Exec=echo -n "%U" | sed 's#smb:##g' | sed 's#/#\\\\#g' | xclip -selection clipboard
+Name=Copy UNC path(s)
+Icon=edit-copy
+
+[Desktop Action copy-network-path]
+Exec=echo -n "%U" | xclip -selection clipboard
+Name=Copy network path(s)
+Icon=edit-copy
+
+[Desktop Entry]
+Actions=copy-unc-path;copy-network-path
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all
+Type=Service
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=Path
+X-KDE-Protocol=!file
+

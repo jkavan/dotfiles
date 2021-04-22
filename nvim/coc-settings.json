@@ -1,0 +1,53 @@
+{
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "markdownlint.config": {
+    "default": true,
+    "MD007": false,
+    "MD013": false,
+    "MD024": false,
+    "MD029": { "style": "one" },
+    "line-length": false
+  },
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["scss", "css", "markdown"],
+
+  "diagnostic-languageserver.filetypes": {
+    "text": ["proselint"]
+  },
+  "diagnostic-languageserver.linters": {
+      "proselint": {
+          "command": "proselint",
+          "isStdout": true,
+          "isStderr": false,
+          "debounce": 100,
+          "args": ["-"],
+          "offsetLine": 0,
+          "offsetColumn": 0,
+          "sourceName": "proselint",
+          "formatLines": 1,
+          "formatPattern": [
+              "^[^:]+:(\\d+):(\\d+):(\\s)(.*)$",
+              {
+                  "line": 1,
+                  "column": 2,
+                  "security": 3,
+                  "message": 4
+              }
+          ],
+          "securities": {
+              " ": "info"
+          }
+      }
+  }
+}
