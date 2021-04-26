@@ -22,7 +22,6 @@
     ~/.dir_colors: ~
     ~/.markdownlintrc: ~
     ~/.gitignore_global: ~
-    ~/.config/systemd/user/ssh-agent.service: 'systemd/ssh-agent.service'
 
 - shell:
   - [mkdir -p ~/.zsh_history, Create a directory for storing shell command history]
@@ -32,6 +31,9 @@
   - [powerline-fonts/install.sh, Install Powerline fonts]
   - [~/.fzf/install --completion --key-bindings --no-update-rc --no-bash, Installing fzf]
   - [nvim +PlugInstall +UpdateRemotePlugins +qa --headless, Installing nvim plugins]
+
+- link:
+    ~/.config/systemd/user/ssh-agent.service: 'systemd/ssh-agent.service'
 
 - link:
     ~/.local/share/kservices5/ServiceMenus:
