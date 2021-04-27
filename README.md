@@ -16,7 +16,7 @@ I mostly use this on Manjaro and Debian Buster/Stretch, but it should be relativ
 
 ### Debian 9: Install packages from backports
 
-The packages on Debian 9 are too old, so I recommend to install tmux and neovim from backports.
+The packages on Debian 9 are too old, so I recommend installing `tmux` and `neovim` from Debian's backports repository.
 
 ```shell
 echo 'deb http://deb.debian.org/debian stretch-backports main contrib non-free' | sudo tee -a /etc/apt/sources.list
@@ -36,3 +36,5 @@ To update submodules, run `git submodule update --remote --init --recursive`.
 systemctl --user start ssh-agent
 systemctl --user enable ssh-agent
 ```
+
+Once the service has started, run `ssh-add` to add your SSH keys into the SSH authentication agent.
