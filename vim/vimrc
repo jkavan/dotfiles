@@ -9,6 +9,9 @@ endif
 
 call plug#begin('~/.vim/plug')
 
+" Language support for pretty much everything (full list here: https://github.com/sheerun/vim-polyglot)
+Plug 'sheerun/vim-polyglot'
+
 " 24bit colorscheme
 Plug 'jacoborus/tender.vim'
 
@@ -71,11 +74,6 @@ Plug 'majutsushi/tagbar'
 " Git plugin
 Plug 'tpope/vim-fugitive'
 
-" Provides JavaScript highlighting and improved indentation
-Plug 'pangloss/vim-javascript'
-" React syntax highlighting and improved indentation
-Plug 'MaxMEllon/vim-jsx-pretty'
-
 " Color highlighter
 Plug 'norcalli/nvim-colorizer.lua'
 
@@ -86,10 +84,9 @@ Plug 'mbbill/undotree'
 " Displays thin vertical lines at each indentation level
 Plug 'yggdroot/indentline'
 
-" Puppet development
-Plug 'rodjek/vim-puppet'
-
-" Syntax plugin for Ansible
+" Language plugin for Ansible
+" This plugin is included in sheerun/polyglot also, but polyglot doesn't
+" run the snippet generation script automatically
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
