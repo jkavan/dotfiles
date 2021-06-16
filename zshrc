@@ -126,8 +126,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Use neovim instead of vim if installed
-which nvim &> /dev/null
-if [ $? -eq 0 ]; then
+if which nvim &> /dev/null; then
   alias vim=nvim
   export EDITOR=/bin/nvim
 fi
@@ -220,7 +219,7 @@ export KEYTIMEOUT=1
 bindkey -M viins "\e[1;5D" vi-backward-blank-word
 bindkey -M viins "\e[1;5C" vi-forward-blank-word
 
-# Copies the shrug emoji to clipboard
+# Copies the shrug emoji to clipboard. Very important
 alias dunnolol='echo -n "¯\\_(ツ)_/¯" | xclip -selection clipboard'
 
 # Initialize the completion system
