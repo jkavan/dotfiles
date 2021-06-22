@@ -12,8 +12,9 @@ call plug#begin('~/.vim/plug')
 " Language support for pretty much everything (full list here: https://github.com/sheerun/vim-polyglot)
 Plug 'sheerun/vim-polyglot'
 
-" 24bit colorscheme
+" Colorschemes
 Plug 'jacoborus/tender.vim'
+Plug 'folke/tokyonight.nvim'
 
 " A better statusline
 Plug 'vim-airline/vim-airline'
@@ -54,6 +55,7 @@ Plug 'wincent/terminus'
 
 " Snippet plugin
 Plug 'SirVer/ultisnips'
+
 " Provides snippet files for various languages
 Plug 'honza/vim-snippets'
 
@@ -78,7 +80,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " Visualizes undo history
-
 Plug 'mbbill/undotree'
 
 " Displays thin vertical lines at each indentation level
@@ -139,7 +140,10 @@ if exists('&t_8f') && exists('&t_8b')
 endif
 
 " Color scheme / theme
-colorscheme tender
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+colorscheme tokyonight
+"colorscheme tender
 set background=dark
 set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
 
