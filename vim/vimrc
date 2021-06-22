@@ -271,6 +271,9 @@ let g:coc_snippet_next = '<tab>'
 " Toggle Tagbar
 nmap <Leader>pt :TagbarToggle<CR><C-W><Right>
 
+" Add keybind for opening coc-explorer
+nnoremap <leader>e :CocCommand explorer<CR>
+
 " Expand Emmet abbreviation
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,ctp EmmetInstall
@@ -319,9 +322,6 @@ endif
 
 " Write to swap file after 0.5sec of inactivity (also makes GitGutter more responsive)
 set updatetime=500
-
-" Add keybind for opening coc-explorer
-nnoremap <leader>e :CocCommand explorer<CR>
 
 " }}}
 
