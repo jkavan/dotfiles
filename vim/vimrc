@@ -27,9 +27,12 @@ Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 " Easily jump to target character
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 
-" Expand Emmet abbreviations
+" Sneak
+Plug 'justinmk/vim-sneak'
+
+"Expand Emmet abbreviations
 Plug 'mattn/emmet-vim'
 
 " Display Git diff in the sign column
@@ -273,9 +276,9 @@ autocmd FileType html,css,ctp EmmetInstall
 "autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Jump to target using EasyMotion
-hi clear EasyMotionTarget
-hi EasyMotionTarget guifg=Red
-map <Leader> <Plug>(easymotion-prefix)
+"hi clear EasyMotionTarget
+"hi EasyMotionTarget guifg=Red
+"map <Leader> <Plug>(easymotion-prefix)
 
 " Press enter to unhighlight text
 nnoremap <silent> <CR> :noh<CR>
