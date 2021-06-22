@@ -112,6 +112,7 @@ let g:coc_global_extensions = [
   \'coc-ultisnips',
   \'coc-yaml',
   \'coc-yank',
+  \'coc-explorer',
 \]
 
 " Fixes compatibility issues with ansible-vim and coc-yaml
@@ -316,8 +317,11 @@ if !exists('g:undotree_SetFocusWhenToggle')
   let g:undotree_WindowLayout = 2
 endif
 
- " Write to swap file after 0.5sec of inactivity (also makes GitGutter more responsive)
+" Write to swap file after 0.5sec of inactivity (also makes GitGutter more responsive)
 set updatetime=500
+
+" Add keybind for opening coc-explorer
+nnoremap <leader>e :CocCommand explorer<CR>
 
 " }}}
 
