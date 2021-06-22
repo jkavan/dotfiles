@@ -27,6 +27,7 @@
   "diagnostic-languageserver.filetypes": {
     "text": ["proselint"]
   },
+  "diagnostic.virtualText": true,
   "diagnostic-languageserver.linters": {
       "proselint": {
           "command": "proselint",
