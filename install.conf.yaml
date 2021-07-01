@@ -4,6 +4,10 @@
 
 - clean: ['~']
 
+- create:
+  - ~/.config
+  - ~/.config/systemd/user
+
 - link:
     ~/.i3: ~
     ~/.tmux.conf: ~
