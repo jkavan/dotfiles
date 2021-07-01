@@ -48,3 +48,9 @@
       force: true
       create: true
       glob: true
+
+- link:
+    ~/.oh-my-zsh/custom/themes/powerlevel10k:
+      path: 'oh-my-zsh-themes/powerlevel10k'
+      force: true
+      create: true
