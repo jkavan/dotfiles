@@ -1,0 +1,50 @@
+FROM archlinux:latest
+
+# Install all the necessary packages
+RUN pacman -Sy --noconfirm \
+        curl \
+        git \
+        inetutils \
+        nodejs \
+        npm \
+        python-pynvim \
+        sudo \
+        tmux \
+        wget \
+        zsh && \
+    pacman -Scc --noconfirm
+
+# Download Neovim AppImage instead of building it manually,
+# since it creates smaller Docker layers due to all the build dependencies
+RUN wget --quiet https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage --output-document nvim && \
+    chmod a+x nvim && \
+    mv nvim /usr/bin/
+
+# Create an user and add it to sudoers
+RUN useradd -m -s /bin/zsh testuser && \
+    usermod -aG wheel testuser && \
+    echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers
+
+# Copy local dotfiles to the image
+COPY --chown=testuser:testuser . /home/testuser/.dotfiles
+
+# Switch to testuser
+USER testuser
+
+# Automatically extract and run the AppImage when it's executed
+ENV APPIMAGE_EXTRACT_AND_RUN 1
+
+# Change working directory to .dotfiles
+WORKDIR /home/testuser/.dotfiles
+
+SHELL ["/bin/zsh", "-c"]
+
+# Run the dotfiles installation script
+RUN ./install
+
+# Make sure to set the correct TERM
+# You can override this when starting the container like this:
+# `docker run -it <container> env TERM=tmux-256color /bin/zsh`
+ENV TERM xterm-256color
+
+CMD ["/bin/zsh"]

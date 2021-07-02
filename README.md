@@ -8,9 +8,12 @@ Running this on Stretch works for the most part, but certain vim plugins won't p
 
 ### Steps
 
-1. Install required packages:
-   1. `sudo pacman -S curl git neovim-nightly nodejs python3 python-pynvim tmux wget zsh` or `sudo apt install curl git python-neovim python3-neovim tmux zsh && curl -sL install-node.now.sh/lts | bash`
-   1. Debian: install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim) appimage or build from sources
+1. Install required packages (Debian):
+   1. `sudo apt install curl git python-neovim python3-neovim tmux zsh && curl -sL install-node.now.sh/lts | bash`
+   1. install [neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim) appimage or build from sources
+1. Install required packages (Manjaro/Arch):
+   1. `sudo pacman -S curl git inetutils nodejs npm python3 python-pynvim tmux wget zsh`
+   1. install [neovim-nightly-bin](https://aur.archlinux.org/packages/neovim-nightly-bin/) or manually build from sources
 1. `git clone https://github.com/jkavan/dotfiles ~/.dotfiles`
 1. Run the dotfiles installation script: `./install`
 1. Set zsh as the default shell
@@ -37,13 +40,17 @@ Once the service has started, run `ssh-add` to add your SSH keys into the SSH au
 
 ## Dotfiles testing with Docker
 
-The repository contains a Dockerfile that contains the latest Debian and these dotfiles.
+Docker can be used to easily test these dotfiles in an isolated environment without affecting current setup.
 
-It can be used to easily test these dotfiles in an isolated environment without affecting current setup.
+The repository contains Dockerfiles for [Debian](Dockerfile) and [Arch](Dockerfile) that contain these dotfiles.
 
-Build a Docker image:
+Build a Debian (latest) Docker image:
 
 `docker build -t jkavan/dotfiles .`
+
+Or build the Arch based Docker image:
+
+`docker build -t jkavan/dotfiles -f=Dockerfile.arch .`
 
 Run the Docker image:
 
