@@ -26,6 +26,7 @@
     ~/.dir_colors: ~
     ~/.markdownlintrc: ~
     ~/.gitignore_global: ~
+    ~/.p10k.zsh: ~
 
 - shell:
   - [mkdir -p ~/.zsh_history, Create a directory for storing shell command history]
