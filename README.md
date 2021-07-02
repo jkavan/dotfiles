@@ -1,3 +1,5 @@
+# Dotfiles ![ci](https://github.com/jkavan/dotfiles/actions/workflows/ci.yml/badge.svg)
+
 ## Installation
 
 I'm currently using [dotbot](https://github.com/anishathalye/dotbot) to automate the management of dotfiles.

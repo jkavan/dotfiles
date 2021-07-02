@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Check out the codebase
         uses: actions/checkout@v2
-        with:
-          path: 'jkavan/dotfiles'
 
       - name: Build Arch image
         run: docker build -t jkavan/dotfiles:arch -f=Dockerfile.arch .
