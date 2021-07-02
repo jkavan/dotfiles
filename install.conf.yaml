@@ -1,3 +1,4 @@
+---
 - defaults:
     link:
       relink: true
@@ -5,8 +6,8 @@
 - clean: ['~']
 
 - create:
-  - ~/.config
-  - ~/.config/systemd/user
+    - ~/.config
+    - ~/.config/systemd/user
 
 - link:
     ~/.i3: ~
