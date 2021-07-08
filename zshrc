@@ -82,6 +82,7 @@ plugins=(
   composer
   taskwarrior
   kubectl
+  highlite
 )
 
 source $ZSH/oh-my-zsh.sh

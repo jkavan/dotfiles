@@ -22,3 +22,6 @@
 [submodule "oh-my-zsh-themes/powerlevel10k"]
 	path = oh-my-zsh-themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k
+[submodule "oh-my-zsh-plugins/highlite"]
+	path = oh-my-zsh-plugins/highlite
+	url = https://github.com/jkavan/highlite
