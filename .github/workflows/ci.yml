@@ -18,3 +18,6 @@ jobs:
 
       - name: Build Debian latest image
         run: docker build -t jkavan/dotfiles:debian -f=Dockerfile .
+
+      - name: Build Debian Buster image
+        run: docker build -t jkavan/dotfiles:debian10 -f=Dockerfile.buster .

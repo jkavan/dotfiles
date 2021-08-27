@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:buster
 
 # Set noninteractive mode during building
 # ENV would persist after the build
@@ -10,6 +10,8 @@ RUN apt-get update -qq && \
         curl \
         git \
         locales \
+        python \
+        python-neovim \
         python3 \
         python3-neovim \
         sudo \
