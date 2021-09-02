@@ -83,6 +83,7 @@ plugins=(
   taskwarrior
   kubectl
   highlite
+  terraform
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -262,3 +263,4 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
