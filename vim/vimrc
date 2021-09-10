@@ -164,9 +164,6 @@ if (has('gui running'))
   set pumblend=20
 endif
 
-" Experimental transparency thinguli
-hi Normal guibg=None ctermbg=None
-
 " }}}
 
 " User interface {{{
