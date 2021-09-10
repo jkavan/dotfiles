@@ -213,6 +213,11 @@ if index(['undotree', 'diff', 'gitcommit'], &ft) < 0
   augroup END
 endif
 
+" Smarter diff options when using neovim as diff tool (`nvim -d`)
+if has('nvim')
+  set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+endif
+
 " Live preview of substitution results
 if (has('nvim'))
   set inccommand=nosplit
