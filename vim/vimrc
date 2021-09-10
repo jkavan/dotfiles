@@ -146,10 +146,14 @@ if exists('&t_8f') && exists('&t_8b')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-" Color scheme / theme
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-colorscheme tokyonight
+if has("nvim")
+  " Color scheme / theme
+  let g:tokyonight_style = "night"
+  let g:tokyonight_italic_functions = 1
+  colorscheme tokyonight
+else
+  colorscheme tender
+endif
 "colorscheme tender
 set background=dark
 set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
