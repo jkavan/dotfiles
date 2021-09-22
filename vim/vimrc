@@ -146,7 +146,7 @@ if exists('&t_8f') && exists('&t_8b')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-if has("nvim")
+if has("nvim-0.5")
   " Color scheme / theme
   let g:tokyonight_style = "night"
   let g:tokyonight_italic_functions = 1
