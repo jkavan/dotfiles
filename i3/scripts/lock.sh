@@ -6,8 +6,8 @@
 # Example configuration (~/.i3/config):
 # bindsym $mod+l exec ~/.i3/scripts/lock.sh
 
-pkill -u "$USER" -USR1 dunst
+dunstctl set-paused true
 xset dpms force off
 i3lock -c 000000 -n
-pkill -u "$USER" -USR2 dunst
+dunstctl set-paused false
 
