@@ -98,6 +98,8 @@ Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'github/copilot.vim'
+
 let g:coc_global_extensions = [
   \'coc-css',
   \'coc-emmet',
