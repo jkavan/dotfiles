@@ -1,7 +1,7 @@
 FROM archlinux:latest
 
 # Install all the necessary packages
-RUN pacman -Sy --noconfirm \
+RUN pacman -Syu --noconfirm \
         curl \
         git \
         inetutils \
