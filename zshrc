@@ -81,7 +81,6 @@ plugins=(
   cake
   composer
   taskwarrior
-  kubectl
   highlite
   terraform
 )
@@ -245,6 +244,14 @@ fi
 # Enable completion for Flux if installed
 if which flux &> /dev/null; then
   command -v flux >/dev/null && . <(flux completion zsh)
+fi
+
+# Enable kubectl and kubectx completion and set short aliases
+if which kubectl &> /dev/null; then
+  # Enable completion for kubectl
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  if which kubectx &> /dev/null; then alias kx=kubectx; fi
 fi
 
 # Enable completion for Molecule if installed
