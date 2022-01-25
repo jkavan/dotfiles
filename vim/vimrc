@@ -186,6 +186,9 @@ set nolist
 " don't give |ins-completion-menu| messages
 set shortmess+=c
 
+" Display message when a file is already open
+set shortmess-=A
+
 " always show signcolumns
 set signcolumn=yes
 
