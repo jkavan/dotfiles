@@ -219,6 +219,9 @@ bindkey -M vicmd "u" undo
 # Map Ctrl+v to edit line in Vim
 bindkey -M vicmd "^V" edit-command-line
 
+# Map Ctrl+Backspace to delete word
+bindkey -M viins "^H" backward-kill-word
+
 # Fix delete key
 bindkey '\e[3~' delete-char
 
