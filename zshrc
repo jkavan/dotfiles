@@ -242,6 +242,11 @@ if which kitty &> /dev/null; then
   kitty + complete setup zsh | source /dev/stdin
 fi
 
+# Enable completion for Flux if installed
+if which flux &> /dev/null; then
+  command -v flux >/dev/null && . <(flux completion zsh)
+fi
+
 # Enable completion for Molecule if installed
 if which molecule &> /dev/null; then
   eval "$(_MOLECULE_COMPLETE=source molecule)"
