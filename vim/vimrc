@@ -256,6 +256,9 @@ let mapleader=','
 " Space toggles folds
 nnoremap <Space> za
 
+" Command for stripping trailing whitespace
+nnoremap <silent><Leader><Space> :%s/\s\+$//e<CR>
+
 " Better insert completion keybinds
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
