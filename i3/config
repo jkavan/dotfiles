@@ -219,6 +219,7 @@ for_window [class="^VirtualBox$"] floating enable border normal
 for_window [class="kitty"] border none
 for_window [class="^youtube-music-desktop-app$"] move to workspace $ws10
 for_window [class="^Spotify+$"] move to workspace $ws10
+for_window [class="^Wine$"] floating disable border normal
 
 # switch to workspace with urgent window automatically
 #for_window [urgent=latest] focus
