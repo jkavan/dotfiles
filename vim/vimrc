@@ -83,6 +83,9 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Visualizes undo history
 Plug 'mbbill/undotree'
 
+" Format Python code
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+
 " Displays thin vertical lines at each indentation level
 Plug 'yggdroot/indentline'
 
@@ -546,6 +549,10 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Autoformat Python files on file write {{{
+if has_key(plugs, 'black-nvim')
+  autocmd BufWritePre *.py :call Black()
+endif
 " }}}
 
 " Automatically close error list on quit / close
