@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plug')
 Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
+Plug 'EdenEast/nightfox.nvim'
 Plug 'jacoborus/tender.vim'
 Plug 'folke/tokyonight.nvim'
 
