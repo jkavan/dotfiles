@@ -19,9 +19,6 @@ Plug 'folke/tokyonight.nvim'
 " A better statusline
 Plug 'vim-airline/vim-airline'
 
-" Insert/delete brackets, parens or quotes in pair
-Plug 'jiangmiao/auto-pairs'
-
 " FZF vim integration
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
