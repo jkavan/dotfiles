@@ -178,6 +178,9 @@ set mouse=a
 " Show command on the bottom right corner
 set showcmd
 
+" Hide command prompt
+set cmdheight=0
+
 " Don't show invisible special characters
 set nolist
 
