@@ -54,9 +54,6 @@ Plug 'godlygeek/tabular'
 " Improved mouse support, cursor shapes, and bracketed paste
 Plug 'wincent/terminus'
 
-" Used for Puppet code validation
-Plug 'dense-analysis/ale', { 'for': ['puppet'] }
-
 " Snippet plugin
 Plug 'SirVer/ultisnips'
 
@@ -443,14 +440,6 @@ autocmd FileType markdown cmap * :exec 'silent !xdg-open %'<CR>
 " Coc.nvim {{{
 
 let g:coc_disable_startup_warning = 1
-
-" }}}
-
-" ALE (only for specific languages) {{{
-
-let b:ale_linters = ['puppet', 'puppetlint']
-let b:ale_fixers = ['puppetlint']
-let g:ale_open_list = 1
 
 " }}}
 
