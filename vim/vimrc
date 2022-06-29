@@ -43,7 +43,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'mg979/vim-visual-multi'
 
 " Mappings to easily manage surroundings in pairs
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 
 " Adds various text objects, such as pairs of parentheses
 Plug 'wellle/targets.vim'
