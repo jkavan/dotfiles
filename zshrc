@@ -183,6 +183,7 @@ if [ -f ~/.fzf.zsh ]; then
     case "$command" in
       cd) fzf "$@" --preview 'tree -C {} | head -200' ;;
       export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
+      vim) fzf "$@" --preview 'cat {} | head -20' ;;
       *)  fzf "$@" ;;
     esac
   }
