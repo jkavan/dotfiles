@@ -141,7 +141,7 @@ fi
 # Use neovim instead of vim if installed
 if which nvim &> /dev/null; then
   alias vim=nvim
-  export EDITOR=/bin/nvim
+  export EDITOR=nvim
 fi
 
 # Enable vi-mode
