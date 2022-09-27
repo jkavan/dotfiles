@@ -67,7 +67,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 
 " Generates and maintains tags
-if executable('/usr/bin/ctags')
+if executable('global') && executable('/usr/bin/ctags')
   Plug 'jsfaint/gen_tags.vim'
 endif
 
