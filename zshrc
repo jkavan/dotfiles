@@ -77,13 +77,15 @@ export DEFAULT_USER="$USER"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   colored-man-pages
-  git
+  docker
+  docker-compose
+  #git
   zsh-syntax-highlighting
   zsh-autosuggestions
-  tmux
-  cake
-  composer
-  taskwarrior
+  #tmux
+  #cake
+  #composer
+  #taskwarrior
   highlite
   terraform
 )
