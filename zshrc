@@ -192,6 +192,19 @@ if [ -f ~/.fzf.zsh ]; then
     apropos '' | fzf --preview-window=up:50% --preview 'echo {} | cut -f 1 -d " " | xargs man' | cut -f 1 -d " "
   }
 
+  # Use `fd` with FZF if installed
+  if which fd &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='fd --type f'
+
+    _fzf_compgen_path() {
+      fd --hidden --follow --exclude ".git" . "$1"
+    }
+
+    # Use fd to generate the list for directory completion
+    _fzf_compgen_dir() {
+      fd --type d --hidden --follow --exclude ".git" . "$1"
+    }
+  fi
 fi
 
 ## Fix Mobaxterm home & end keys
