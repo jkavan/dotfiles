@@ -557,5 +557,7 @@ if has_key(plugs, 'black-nvim')
 endif
 " }}}
 
+" Override Copilot nodejs bin path
+let g:copilot_node_command = '~/.nodenv/versions/17.9.0/bin/node'
 
 " vim: foldmethod=marker foldlevel=0
