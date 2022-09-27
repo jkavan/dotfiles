@@ -154,7 +154,6 @@ if has("nvim-0.5")
 else
   colorscheme tender
 endif
-"colorscheme tender
 set background=dark
 set guifont=Source\ Code\ Pro\ for\ Powerline\ 10
 
@@ -558,8 +557,5 @@ if has_key(plugs, 'black-nvim')
 endif
 " }}}
 
-" Automatically close error list on quit / close
-" This was used for ALE, but it MIGHT help with other extensions as well
-autocmd QuitPre * if empty(&bt) | lclose | endif
 
 " vim: foldmethod=marker foldlevel=0
