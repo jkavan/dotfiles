@@ -286,6 +286,19 @@ else
   test -r $d && eval "$(dircolors $d)"
 fi
 
+# Git aliases
+function git_status() {
+  if [ -z "$(git status --porcelain)" ]; then
+    echo "Working dir clean"
+  else
+    vim -c 'G | only' -c 'normal gu'
+  fi
+}
+# Short Git status
+alias gs="git status -sb"
+# Use Vim Fugitive for Git
+alias gsv=git_status
+
 # Use fuzzy search for completion if there are no matches
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
