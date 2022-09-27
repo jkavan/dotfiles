@@ -1,9 +1,12 @@
 {
+  "eslint.autoFixOnSave": true,
   "git.addedSign.hlGroup": "GitGutterAdd",
   "git.changedSign.hlGroup": "GitGutterChange",
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "diagnostic.warningSign": "w",
+  "diagnostic.errorSign": "!!",
   "explorer.icon.source": "vim-devicons",
   "explorer.icon.enableNerdfont": true,
   "markdownlint.config": {
@@ -34,6 +37,7 @@
   },
   "coc.preferences.formatOnSaveFiletypes": ["scss", "css", "markdown"],
 
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
   "diagnostic-languageserver.filetypes": {
     "text": ["proselint"]
   },
