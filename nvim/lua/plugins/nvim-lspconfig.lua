@@ -84,7 +84,7 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'sumneko_lua', 'bashls', 'pyright', 'tsserver', 'clangd', 'html', 'diagnosticls', 'dockerls', 'yamlls', 'jsonls', 'intelephense', 'terraformls', 'vimls', 'marksman' }
+local servers = { 'lua_ls', 'bashls', 'pyright', 'tsserver', 'clangd', 'html', 'diagnosticls', 'dockerls', 'yamlls', 'jsonls', 'intelephense', 'terraformls', 'vimls', 'marksman' }
 
 -- tsserver settings
 local ts_settings = function(client)
@@ -108,30 +108,30 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require'lspconfig'.sumneko_lua.setup {
-    settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim', 'use'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+-- require'lspconfig'.sumneko_lua.setup {
+--     settings = {
+--     Lua = {
+--       runtime = {
+--         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--         version = 'LuaJIT',
+--         -- Setup your lua path
+--         path = runtime_path,
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = {'vim', 'use'},
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = vim.api.nvim_get_runtime_file("", true),
+--       },
+--       -- Do not send telemetry data containing a randomized but unique identifier
+--       telemetry = {
+--         enable = false,
+--       },
+--     },
+--   },
+-- }
 
 local null_ls = require("null-ls")
 null_ls.setup({
@@ -140,7 +140,6 @@ null_ls.setup({
     null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
     null_ls.builtins.formatting.prettier, -- prettier, eslint, eslint_d, or prettierd
     null_ls.builtins.diagnostics.markdownlint,
-    null_ls.builtins.diagnostics.write_good.with { extra_args = { "--no-passive" } },
     null_ls.builtins.diagnostics.tsc,
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.diagnostics.pylint.with({

@@ -32,7 +32,6 @@ require('nvim-tree').setup {
     }
   },
 respect_buf_cwd = true,
-  open_on_setup = true,
   update_cwd = true,
   actions = {
     open_file = {
