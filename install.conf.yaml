@@ -23,7 +23,6 @@
     ~/.zshenv: ~
     ~/.inputrc: ~
     ~/.fzf: ~
-    ~/.fzf-tab-completion: 'fzf-tab-completion/'
     ~/.dir_colors: ~
     ~/.markdownlintrc: ~
     ~/.gitignore_global: ~

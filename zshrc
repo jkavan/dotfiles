@@ -168,14 +168,6 @@ if [ -f ~/.fzf.zsh ]; then
   # Show preview window when running Alt+C to change directory
   export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
 
-  # Load FZF ZSH tab completion plugin if it exists
-  # It adds FZF to all tab completions overriding the default menu
-  FZF_TAB_COMPLETION_PATH=~/.fzf-tab-completion/zsh/fzf-zsh-completion.sh
-  if [ -f $FZF_TAB_COMPLETION_PATH ]; then
-    source $FZF_TAB_COMPLETION_PATH
-    zstyle ':completion:*' fzf-search-display true
-  fi
-
   _fzf_comprun() {
     local command=$1
     shift
@@ -206,6 +198,7 @@ if [ -f ~/.fzf.zsh ]; then
       fd --type d --hidden --follow --exclude ".git" . "$1"
     }
   fi
+  source ~/.fzf-tab/fzf-tab.plugin.zsh
 fi
 
 ## Fix Mobaxterm home & end keys

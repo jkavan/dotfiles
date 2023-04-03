@@ -7,9 +7,9 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf
-[submodule "fzf-tab-completion"]
-	path = fzf-tab-completion
-	url = https://github.com/lincheney/fzf-tab-completion
+[submodule "fzf-tab"]
+	path = fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab
 [submodule "oh-my-zsh-plugins/zsh-autosuggestions"]
 	path = oh-my-zsh-plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
