@@ -84,7 +84,7 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'lua_ls', 'bashls', 'pyright', 'tsserver', 'clangd', 'html', 'diagnosticls', 'dockerls', 'yamlls', 'jsonls', 'intelephense', 'terraformls', 'vimls', 'marksman' }
+local servers = { 'lua_ls', 'bashls', 'pyright', 'tsserver', 'clangd', 'html', 'diagnosticls', 'dockerls', 'yamlls', 'jsonls', 'intelephense', 'terraformls', 'vimls', 'marksman', 'tflint' }
 
 -- tsserver settings
 local ts_settings = function(client)
@@ -136,8 +136,8 @@ end
 local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
-    null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
-    null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
+    -- null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
+    -- null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
     null_ls.builtins.formatting.prettier, -- prettier, eslint, eslint_d, or prettierd
     null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.diagnostics.tsc,

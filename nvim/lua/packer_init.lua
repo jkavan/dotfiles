@@ -51,6 +51,9 @@ return packer.startup(function()
   -- Treesitter interface
   use 'nvim-treesitter/nvim-treesitter'
 
+  -- Treesitter interface
+  use 'hashivim/vim-terraform'
+
   -- Color schemes
   use 'navarasu/onedark.nvim'
 
