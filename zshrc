@@ -293,6 +293,19 @@ alias gs="git status -sb"
 # Use Vim Fugitive for Git
 alias gsv=git_status
 
+###-begin-cdk-completions-###
+_cdk_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" cdk --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _cdk_yargs_completions cdk
+###-end-cdk-completions-###
+
 # Use fuzzy search for completion if there are no matches
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
@@ -304,6 +317,8 @@ zstyle ':completion:*' use-ip true
 # cd will never select the parent directory (e.g.: cd ../<TAB>):
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
+# Load ripgrep configuration file
+export RIPGREP_CONFIG_PATH=~/.dotfiles/ripgreprc
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
