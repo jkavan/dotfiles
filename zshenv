@@ -11,6 +11,11 @@ else
   PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 fi
 
+# Append user's bin folder to PATH if it exists
+if [ -d "$HOME/bin" ] ; then
+  PATH="$PATH:$HOME/bin"
+fi
+
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Set awsume alias and auto-complete function if installed
