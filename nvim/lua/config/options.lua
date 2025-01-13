@@ -11,4 +11,4 @@ local opt = vim.opt
 opt.autowrite = false
 
 -- Disable yanking to clipboard
-opt.clipboard = nil
+opt.clipboard = ""
