@@ -1,0 +1,55 @@
+# Use Ubuntu 24.10 as the base image
+FROM ubuntu:24.10
+
+# Set noninteractive mode during building
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Install all the necessary packages
+RUN apt-get update -qq && \
+    apt-get install -y -qq \
+        curl \
+        git \
+        locales \
+        python3 \
+        python3-pip \
+        python3-neovim \
+        tmux \
+        wget \
+        zsh \
+        neovim \
+        nodejs \
+        npm && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Generate UTF-8 locales
+RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && \
+    locale-gen en_US.UTF-8 && \
+    dpkg-reconfigure locales
+
+# Create a user and add it to sudoers
+RUN useradd -m -s /bin/zsh testuser && \
+    usermod -aG sudo testuser && \
+    echo "testuser ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers
+
+# Copy local dotfiles to the image
+COPY --chown=testuser:testuser . /home/testuser/.dotfiles
+
+# Switch to testuser
+USER testuser
+
+# Change working directory to .dotfiles
+WORKDIR /home/testuser/.dotfiles
+
+# Set the default shell to Zsh
+SHELL ["/bin/zsh", "-c"]
+
+# Run the dotfiles installation script
+RUN ./install
+
+# Set default terminal environment
+ENV TERM xterm-256color
+
+# Start Zsh shell by default
+CMD ["/bin/zsh"]
+

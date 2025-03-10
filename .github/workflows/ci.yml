@@ -13,11 +13,11 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v2
 
+      - name: Build Ubuntu 24.10 image
+        run: docker build -t jkavan/dotfiles:ubuntu -f=Dockerfile.ubuntu .
+
       - name: Build Arch image
         run: docker build -t jkavan/dotfiles:arch -f=Dockerfile.arch .
 
       - name: Build Debian latest image
         run: docker build -t jkavan/dotfiles:debian -f=Dockerfile .
-
-      - name: Build Debian Buster image
-        run: docker build -t jkavan/dotfiles:debian10 -f=Dockerfile.buster .
