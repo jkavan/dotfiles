@@ -331,3 +331,4 @@ export RIPGREP_CONFIG_PATH=~/.dotfiles/ripgreprc
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/
 # Java 21
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home/
+export GPG_TTY=$(tty)
