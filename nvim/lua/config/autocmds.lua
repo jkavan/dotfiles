@@ -7,7 +7,18 @@ vim.api.nvim_create_augroup("JenkinsfileFTDetect", { clear = true })
 
 -- Set up an autocommand to associate Jenkinsfile patterns with the groovy filetype
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "Jenkinsfile", "Jenkinsfile.*" },
+  pattern = { "Jenkinsfile", "Jenkinsfile.*", "*.Jenkinsfile" },
   group = "JenkinsfileFTDetect",
   command = "set filetype=groovy",
 })
+
+-- vim.api.nvim_create_augroup("YamlIndentFix", { clear = true })
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+--   pattern = { "*.yaml", "*.yml" },
+--   group = "YamlIndentFix",
+--   callback = function()
+--     vim.opt.tabstop = 2
+--     vim.opt.shiftwidth = 2
+--     vim.opt.softtabstop = 2
+--   end,
+-- })

@@ -79,6 +79,7 @@ plugins=(
   colored-man-pages
   docker
   docker-compose
+  podman
   #git
   zsh-syntax-highlighting
   zsh-autosuggestions
@@ -88,6 +89,7 @@ plugins=(
   #taskwarrior
   highlite
   terraform
+  aws
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -322,3 +324,10 @@ export RIPGREP_CONFIG_PATH=~/.dotfiles/ripgreprc
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Java 11
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/
+# Java 17
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/
+# Java 21
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home/

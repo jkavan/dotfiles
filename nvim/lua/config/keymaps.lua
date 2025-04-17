@@ -6,4 +6,4 @@ local keys = vim.keymap
 
 -- Replace lazygit keymaps with Git Fugitive
 keys.set("n", "<leader>gg", ":G<CR>", { desc = "Open Git Fugitive" })
---keys.del("n", "<leader>gG")
+-- keys.del("n", "<leader>gG")
